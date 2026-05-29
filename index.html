@@ -9,28 +9,40 @@
 </head>
 
 <script>
-function generateCard() {
+function submitForm() {
 
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
   let address = document.getElementById("address").value.trim();
 
-  // CHECK IF FORM IS EMPTY
   if (name === "" || email === "" || address === "") {
-    alert("⚠️ Please fill the registration form first");
-    return;
+    alert("Please fill all fields");
+    return false;
   }
 
-  // SHOW DATA IN ID CARD
+  // SAVE TO GOOGLE SHEETS (if already connected)
+  fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
+    method: "POST",
+    body: JSON.stringify({ name, email, address })
+  });
+
+  // AUTO GENERATE MEMBER ID
+  let memberId = "APS" + Date.now().toString().slice(-6);
+
+  // SHOW ID CARD AUTOMATICALLY
   document.getElementById("cardName").innerText = name;
   document.getElementById("cardEmail").innerText = email;
   document.getElementById("cardAddress").innerText = address;
-
-  // GENERATE MEMBER ID
-  let memberId = "APS" + Math.floor(100000 + Math.random() * 900000);
-
   document.getElementById("memberId").innerText = memberId;
 
+  // SUCCESS MESSAGE
+  document.getElementById("msg").innerText =
+    "Registration successful! Your ID Card is generated.";
+
+  // RESET FORM
+  document.querySelector(".form").reset();
+
+  return false;
 }
 </script>
   
