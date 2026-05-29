@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,22 +14,23 @@
 <header>
   <div class="logo">APSPEWA</div>
 
+  <div class="menu" onclick="toggleMenu()">☰</div>
+
   <nav id="nav">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#features">Features</a>
     <a href="#gallery">Gallery</a>
+    <a href="#register">Register</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <div class="menu" onclick="toggleMenu()">☰</div>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <h1>Welcome to APSPEWA</h1>
   <p>Empowering employees and building a stronger professional community through innovation, support, and development.</p>
-  <a href="#about" class="btn">Explore More</a>
+  <a href="#register" class="btn">Join APSPEWA</a>
 </section>
 
 <!-- ABOUT -->
@@ -36,7 +38,8 @@
   <h2>About APSPEWA</h2>
   <p>
     APSPEWA is dedicated to empowering employees by providing growth opportunities,
-    skill development, and professional networking. We believe in innovation and teamwork.
+    skill development, and professional networking. We focus on innovation, teamwork,
+    and building a strong community for a better future.
   </p>
 </section>
 
@@ -47,7 +50,7 @@
   <div class="grid">
     <div class="card">
       <h3>Training</h3>
-      <p>Skill development programs for employees.</p>
+      <p>Skill development programs and workshops.</p>
     </div>
 
     <div class="card">
@@ -57,7 +60,7 @@
 
     <div class="card">
       <h3>Innovation</h3>
-      <p>Encouraging modern ideas and growth.</p>
+      <p>Encouraging new ideas and modern solutions.</p>
     </div>
   </div>
 </section>
@@ -74,6 +77,21 @@
   </div>
 </section>
 
+<!-- REGISTER -->
+<section id="register" class="section">
+  <h2>Member Registration</h2>
+
+  <form class="form" onsubmit="return submitForm()">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="address" placeholder="Address" required>
+
+    <button type="submit">Submit Registration</button>
+  </form>
+
+  <p id="msg"></p>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="section">
   <h2>Contact Us</h2>
@@ -85,9 +103,29 @@
   © 2026 APSPEWA | All Rights Reserved
 </footer>
 
+<!-- SCRIPT -->
 <script>
 function toggleMenu() {
   document.getElementById("nav").classList.toggle("active");
+}
+
+function submitForm() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let address = document.getElementById("address").value;
+
+  let users = JSON.parse(localStorage.getItem("apspewaUsers") || "[]");
+
+  users.push({ name, email, address });
+
+  localStorage.setItem("apspewaUsers", JSON.stringify(users));
+
+  document.getElementById("msg").innerText =
+    "Registration successful! Welcome " + name;
+
+  document.querySelector(".form").reset();
+
+  return false;
 }
 </script>
 
