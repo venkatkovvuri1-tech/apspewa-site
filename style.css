@@ -1,1 +1,140 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  background: #f4f8ff;
+  color: #1f2a44;
+}
+
+/* HEADER */
+header {
+  background: #0a3d91;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* MOBILE MENU */
+.menu {
+  display: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(120deg, #0a3d91, #2a6fdb);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: white;
+  color: #0a3d91;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* SECTIONS */
+.section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  color: #0a3d91;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: #0a3d91;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #0a3d91;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+}
