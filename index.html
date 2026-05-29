@@ -8,6 +8,29 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
+  <script>
+function generateCard() {
+
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let address = document.getElementById("address").value;
+
+  if(name === "" || email === "" || address === "") {
+    alert("Please fill registration form first");
+    return;
+  }
+
+  document.getElementById("cardName").innerText = name;
+  document.getElementById("cardEmail").innerText = email;
+  document.getElementById("cardAddress").innerText = address;
+
+  // RANDOM MEMBER ID
+  let memberId = "APS" + Math.floor(100000 + Math.random() * 900000);
+
+  document.getElementById("memberId").innerText = memberId;
+}
+</script>
+  
   <!-- MEMBER ID CARD -->
 <section class="section" id="idcard">
   <h2>APSPEWA Member ID Card</h2>
