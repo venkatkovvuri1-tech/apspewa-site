@@ -195,3 +195,55 @@ footer {
 .whatsapp-float img {
   width: 100%;
 }
+
+/* ID CARD */
+.id-card {
+  width: 320px;
+  background: white;
+  margin: auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.card-header {
+  background: #0a3d91;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.card-body h3 {
+  color: #0a3d91;
+  margin-bottom: 8px;
+}
+
+.member-id {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.download-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  background: #0a3d91;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
