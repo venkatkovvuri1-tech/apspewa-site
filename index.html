@@ -8,26 +8,29 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-  <script>
+<script>
 function generateCard() {
 
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let address = document.getElementById("address").value;
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let address = document.getElementById("address").value.trim();
 
-  if(name === "" || email === "" || address === "") {
-    alert("Please fill registration form first");
+  // CHECK IF FORM IS EMPTY
+  if (name === "" || email === "" || address === "") {
+    alert("⚠️ Please fill the registration form first");
     return;
   }
 
+  // SHOW DATA IN ID CARD
   document.getElementById("cardName").innerText = name;
   document.getElementById("cardEmail").innerText = email;
   document.getElementById("cardAddress").innerText = address;
 
-  // RANDOM MEMBER ID
+  // GENERATE MEMBER ID
   let memberId = "APS" + Math.floor(100000 + Math.random() * 900000);
 
   document.getElementById("memberId").innerText = memberId;
+
 }
 </script>
   
