@@ -27,7 +27,10 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <button type="button" onclick="generateAndDownload()">
+  Generate & Download ID (PDF)
+</button>
 /* HERO (REPLACED & FIXED) */
 .hero {
   height: 90vh;
@@ -322,3 +325,68 @@ function downloadPDF() {
 
 </body>
 </html>
+
+<script>
+function generateAndDownload() {
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let address = document.getElementById("address").value;
+
+  if(!name || !email || !address){
+    alert("Please fill all fields");
+    return;
+  }
+
+  let id = "APS" + Math.floor(100000 + Math.random()*900000);
+
+  // SET DATA ON PAGE
+  document.getElementById("cardName").innerText = name;
+  document.getElementById("cardEmail").innerText = email;
+  document.getElementById("cardAddress").innerText = address;
+  document.getElementById("memberId").innerText = id;
+
+  // GET IMAGE
+  let file = document.getElementById("photo").files[0];
+<input type="file" id="photo" accept="image/*">
+  let imgData = null;
+
+  if(file){
+    let reader = new FileReader();
+
+    reader.onload = function(e){
+
+      imgData = e.target.result;
+
+      createPDF(imgData);
+    }
+
+    reader.readAsDataURL(file);
+
+  } else {
+    createPDF(null);
+  }
+
+  function createPDF(imgData){
+
+    doc.setFontSize(18);
+    doc.text("APSPEWA OFFICIAL ID CARD", 40, 20);
+
+    doc.setFontSize(12);
+    doc.text("Name: " + name, 20, 40);
+    doc.text("Email: " + email, 20, 50);
+    doc.text("Address: " + address, 20, 60);
+    doc.text("ID: " + id, 20, 70);
+
+    // IMAGE IN PDF
+    if(imgData){
+      doc.addImage(imgData, "JPEG", 140, 30, 50, 50);
+    }
+
+    doc.save("APSPEWA_ID_CARD.pdf");
+  }
+}
+</script>
