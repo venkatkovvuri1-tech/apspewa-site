@@ -1,16 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APSPEWA - Empowering Employees</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
 <script>
 function submitForm() {
-
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
   let address = document.getElementById("address").value.trim();
@@ -20,197 +9,24 @@ function submitForm() {
     return false;
   }
 
-  // SAVE TO GOOGLE SHEETS (if already connected)
-  fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
-    method: "POST",
-    body: JSON.stringify({ name, email, address })
-  });
-
-  // AUTO GENERATE MEMBER ID
+  // Generate Member ID
   let memberId = "APS" + Date.now().toString().slice(-6);
 
-  // SHOW ID CARD AUTOMATICALLY
+  // Save to localStorage
+  let users = JSON.parse(localStorage.getItem("apspewaUsers") || "[]");
+  users.push({ name, email, address, memberId });
+  localStorage.setItem("apspewaUsers", JSON.stringify(users));
+
+  // Fill ID Card
   document.getElementById("cardName").innerText = name;
   document.getElementById("cardEmail").innerText = email;
   document.getElementById("cardAddress").innerText = address;
   document.getElementById("memberId").innerText = memberId;
 
-  // SUCCESS MESSAGE
+  // Show message
   document.getElementById("msg").innerText =
-    "Registration successful! Your ID Card is generated.";
-
-  // RESET FORM
-  document.querySelector(".form").reset();
+    "Registration successful! ID Card generated.";
 
   return false;
 }
 </script>
-
-  <h3 id="cardName"></h3>
-<p id="cardEmail"></p>
-<p id="cardAddress"></p>
-<span id="memberId"></span>
-  
-  <!-- MEMBER ID CARD -->
-<section class="section" id="idcard">
-  <h2>APSPEWA Member ID Card</h2>
-
-  <div class="id-card" id="card">
-
-    <div class="card-header">
-      APSPEWA
-    </div>
-
-    <div class="card-body">
-
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-           class="profile-img">
-
-      <h3 id="cardName">Member Name</h3>
-
-      <p id="cardEmail">member@email.com</p>
-
-      <p id="cardAddress">Address</p>
-
-      <p class="member-id">
-        Member ID:
-        <span id="memberId"></span>
-      </p>
-
-    </div>
-
-  </div>
-
-  <button onclick="generateCard()" class="download-btn">
-    Generate ID Card
-  </button>
-</section>
-  
-  <a href="https://wa.me/917899341629?text=Hello%20APSPEWA%20Team"
-  <!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/917899341629" class="whatsapp-float" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60">
-</a>
-<body>
-
-<!-- HEADER -->
-<header>
-  <div class="logo">APSPEWA</div>
-
-  <div class="menu" onclick="toggleMenu()">☰</div>
-
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#features">Features</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#register">Register</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <h1>Welcome to APSPEWA</h1>
-  <p>Empowering employees and building a stronger professional community through innovation, support, and development.</p>
-  <a href="#register" class="btn">Join APSPEWA</a>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h2>About APSPEWA</h2>
-  <p>
-    APSPEWA is dedicated to empowering employees by providing growth opportunities,
-    skill development, and professional networking. We focus on innovation, teamwork,
-    and building a strong community for a better future.
-  </p>
-</section>
-
-<!-- FEATURES -->
-<section id="features" class="section">
-  <h2>Our Features</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Training</h3>
-      <p>Skill development programs and workshops.</p>
-    </div>
-
-    <div class="card">
-      <h3>Community</h3>
-      <p>Strong professional network and support system.</p>
-    </div>
-
-    <div class="card">
-      <h3>Innovation</h3>
-      <p>Encouraging new ideas and modern solutions.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="section">
-  <h2>Gallery</h2>
-
-  <div class="gallery">
-    <img src="images/1.jpg">
-    <img src="images/2.jpg">
-    <img src="images/3.jpg">
-    <img src="images/4.jpg">
-  </div>
-</section>
-
-<!-- REGISTER -->
-<section id="register" class="section">
-  <h2>Member Registration</h2>
-
-  <form class="form" onsubmit="return submitForm()">
-    <input type="text" id="name" placeholder="Full Name" required>
-    <input type="email" id="email" placeholder="Email Address" required>
-    <input type="text" id="address" placeholder="Address" required>
-
-    <button type="submit">Submit Registration</button>
-  </form>
-
-  <p id="msg"></p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <h2>Contact Us</h2>
-  <p>Email: info@apspewa.org</p>
-  <p>Phone: +91 9963613977, +91 7899341629</p>
-</section>
-
-<footer>
-  © 2026 APSPEWA | All Rights Reserved
-</footer>
-
-<!-- SCRIPT -->
-<script>
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("active");
-}
-
-function submitForm() {
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let address = document.getElementById("address").value;
-
-  let users = JSON.parse(localStorage.getItem("apspewaUsers") || "[]");
-
-  users.push({ name, email, address });
-
-  localStorage.setItem("apspewaUsers", JSON.stringify(users));
-
-  document.getElementById("msg").innerText =
-    "Registration successful! Welcome " + name;
-
-  document.querySelector(".form").reset();
-
-  return false;
-}
-</script>
-
-</body>
-</html>
