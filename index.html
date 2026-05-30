@@ -189,22 +189,24 @@ footer {
 </section>
 
 <!-- REGISTER -->
-<section id="register">
-  <h2>Member Registration</h2>
+<form id="regForm">
 
-  <form id="regForm">
-    <input type="text" id="name" placeholder="Full Name" required>
-    <input type="text" id="Email" placeholder="Email ID" required>
-    <input type="text" id="phone" placeholder="Phone Number" required>
-    <input type="text" id="Mandalam" placeholder="Mandalam" required>
-    <input type="text" id="district" placeholder="District" required>
-    <input type="text" id="State" placeholder="state" required>
+  <input type="text" id="name" placeholder="Full Name" required>
 
-    <button type="button" onclick="generateID()">Generate ID Card</button>
-  </form>
+  <input type="email" id="email" placeholder="Email ID" required>
 
-  <div id="idOutput"></div>
-</section>
+  <input type="text" id="phone" placeholder="Phone Number" required>
+
+  <input type="text" id="mandal" placeholder="Mandal" required>
+
+  <input type="text" id="district" placeholder="District" required>
+
+  <input type="text" id="state" placeholder="State" required>
+
+  <button type="button" onclick="generateID()">Generate ID Card</button>
+</form>
+
+<div id="idOutput"></div>
 
 <!-- GALLERY -->
 <section id="gallery">
