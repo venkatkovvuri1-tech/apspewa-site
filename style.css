@@ -1,249 +1,81 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background: #f4f8ff;
-  color: #1f2a44;
-}
-
-/* HEADER */
-header {
-  background: #0a3d91;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-nav {
-  display: flex;
-  gap: 15px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.menu {
-  display: none;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-}
-
-/* HERO */
+<style>
 .hero {
-  background: linear-gradient(120deg, #0a3d91, #2a6fdb);
-  color: white;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 80px 20px;
+
+  background: linear-gradient(rgba(26,35,126,0.85), rgba(57,73,171,0.85)),
+              url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+  padding: 20px;
+}
+
+.hero-content {
+  max-width: 800px;
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: 52px;
+  margin-bottom: 15px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .hero p {
-  margin-top: 10px;
   font-size: 18px;
+  margin-bottom: 25px;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 22px;
-  background: white;
-  color: #0a3d91;
-  border-radius: 25px;
+  padding: 12px 25px;
+  background: #ffca28;
+  color: black;
+  border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-/* SECTIONS */
-.section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
+.btn:hover {
+  transform: scale(1.05);
 }
 
-h2 {
-  color: #0a3d91;
-  margin-bottom: 20px;
+.btn-outline {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.card {
+.btn-outline:hover {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  color: #1a237e;
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* FORM */
-.form {
-  max-width: 450px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.form button {
-  background: #0a3d91;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-#msg {
-  margin-top: 10px;
-  color: green;
-  font-weight: bold;
-}
-
-/* FOOTER */
-footer {
-  background: #0a3d91;
-  color: white;
-  text-align: center;
-  padding: 15px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
-  .menu {
-    display: block;
-  }
-
-  nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #0a3d91;
-    width: 200px;
-    padding: 10px;
-  }
-
-  nav.active {
-    display: flex;
-  }
-
-  nav a {
-    padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-  }
-
+@media(max-width:600px){
   .hero h1 {
-    font-size: 28px;
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
   }
 }
-
-/* WHATSAPP BUTTON */
-.whatsapp-float {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-}
-
-.whatsapp-float img {
-  width: 100%;
-}
-
-/* ID CARD */
-.id-card {
-  width: 320px;
-  background: white;
-  margin: auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  margin-top: 20px;
-}
-
-.card-header {
-  background: #0a3d91;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.card-body {
-  padding: 20px;
-  text-align: center;
-}
-
-.profile-img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-}
-
-.card-body h3 {
-  color: #0a3d91;
-  margin-bottom: 8px;
-}
-
-.member-id {
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-.download-btn {
-  margin-top: 20px;
-  padding: 12px 20px;
-  border: none;
-  background: #0a3d91;
-  color: white;
-  border-radius: 25px;
-  cursor: pointer;
-}
+</style>
