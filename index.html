@@ -1,449 +1,222 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APSPEWA Portal</title>
+<title>APSPEWA Membership</title>
 
-<!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
 body{
-background:#f4f8ff;
-color:#003366;
+  margin:0;
+  font-family:Arial;
+  background:#f4f9ff;
 }
 
-/* NAV */
 header{
-background:linear-gradient(90deg,#0057b7,#007bff);
-padding:15px;
-position:sticky;
-top:0;
-z-index:1000;
+  background:#0d47a1;
+  color:white;
+  padding:20px;
+  text-align:center;
 }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-color:white;
+#register{
+  padding:60px 20px;
 }
 
-nav ul{
-display:flex;
-gap:20px;
-list-style:none;
+.container{
+  max-width:900px;
+  margin:auto;
 }
 
-nav ul li a{
-color:white;
-text-decoration:none;
-font-weight:bold;
+form{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  border-top:6px solid #1976d2;
 }
 
-/* HERO */
-.hero{
-height:80vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:linear-gradient(rgba(0,87,183,0.8),rgba(255,255,255,0.9)),
-url('https://images.unsplash.com/photo-1529070538774-1843cb3265df') center/cover;
-color:white;
-padding:20px;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-.hero h2{
-font-size:40px;
+input, textarea{
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  width:100%;
 }
 
-.hero p{
-max-width:700px;
-margin-top:10px;
+textarea{
+  margin-top:15px;
+  height:80px;
 }
 
-/* SECTIONS */
-section{
-padding:50px 20px;
+.btn{
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.section-title{
-text-align:center;
-font-size:28px;
-margin-bottom:20px;
-color:#0057b7;
+.blue{background:#1976d2;color:#fff;}
+.dark{background:#0d47a1;color:#fff;}
+.green{background:#2e7d32;color:#fff;}
+
+.buttons{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
-/* FORM */
-.form-box{
-max-width:650px;
-margin:auto;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+/* POPUP */
+#popup{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
 }
 
-input{
-width:100%;
-padding:10px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:5px;
+.popup-box{
+  background:#fff;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  width:300px;
 }
 
-button{
-width:100%;
-padding:10px;
-margin-top:10px;
-border:none;
-background:#0057b7;
-color:white;
-font-weight:bold;
-cursor:pointer;
-border-radius:5px;
-}
-
-button:hover{
-background:#003f8a;
-}
-
-/* ID CARD */
-.id-card{
-margin-top:15px;
-padding:15px;
-background:#e6f0ff;
-border-left:5px solid #0057b7;
-}
-
-/* GALLERY */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-}
-
-.gallery img{
-width:100%;
-border-radius:10px;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-background:#0057b7;
-color:white;
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <header>
-<nav>
-<h2>APSPEWA</h2>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#register">Register</a></li>
-<li><a href="#gallery">Gallery</a></li>
-</ul>
-</nav>
+  <h2>APSPEWA Membership Portal</h2>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-<div>
-<h2>Welcome to APSPEWA Portal</h2>
-<p>
-APSPEWA is a community empowerment and welfare association platform designed to connect members digitally,
-provide identity cards, and support organized community development with transparency and trust.
-</p>
+<section id="register">
+<div class="container">
+
+<h2 style="text-align:center;color:#0d47a1;">Membership Registration</h2>
+
+<form id="memberForm">
+
+<div class="grid">
+
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Father Name" required>
+
+<input type="email" placeholder="Email ID" required>
+<input type="tel" placeholder="Mobile Number" required>
+
+<input type="text" placeholder="Mandal" required>
+<input type="text" placeholder="District" required>
+
+<input type="text" placeholder="State" required>
+<input type="text" placeholder="Pincode" required>
+
+</div>
+
+<textarea placeholder="Full Address"></textarea>
+
+<div class="buttons">
+
+<input type="file" id="photoInput" accept="image/*">
+
+<button type="button" class="btn blue" onclick="generateID()">Generate ID</button>
+
+<button type="submit" class="btn dark">Submit</button>
+
+<button type="button" class="btn green" onclick="downloadPDF()">Download PDF</button>
+
+</div>
+
+<p id="idResult" style="color:green;font-weight:bold;"></p>
+
+</form>
 </div>
 </section>
 
-<!-- REGISTER -->
-
-<section id="register" style="padding:60px 20px; background:#f4f9ff;">
-  <div style="max-width:900px; margin:auto;">
-
-    <h2 style="text-align:center; color:#0d47a1; font-size:32px; margin-bottom:10px;">
-      Membership Registration
-    </h2>
-
-    <p style="text-align:center; color:#555; margin-bottom:30px;">
-      Join APSPEWA official membership portal
-    </p>
-
-    <form id="memberForm"
-      style="
-        background:#ffffff;
-        padding:30px;
-        border-radius:18px;
-        box-shadow:0 10px 30px rgba(0,0,0,0.1);
-        border-top:6px solid #1976d2;
-      ">
-
-      <!-- GRID FIELDS -->
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-
-        <input type="text" placeholder="Full Name" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="text" placeholder="Father / Guardian Name" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="email" placeholder="Email ID" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="tel" placeholder="Mobile Number" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="text" placeholder="Mandal" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="text" placeholder="District" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="text" placeholder="State" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-        <input type="text" placeholder="Pincode" required
-          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
-
-      </div>
-
-      <!-- ADDRESS -->
-      <textarea placeholder="Full Address"
-        style="margin-top:20px;width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;height:90px;"></textarea>
-
-      <!-- UPLOAD + BUTTONS -->
-      <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; align-items:center;">
-
-        <input type="file" accept="image/*"
-          style="padding:10px;border:1px solid #ccc;border-radius:10px;background:#fff;">
-
-        <button type="button"
-          onclick="generateID()"
-          style="
-            background:#1976d2;
-            color:#fff;
-            padding:12px 20px;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
-            font-weight:bold;
-          ">
-          Generate ID
-          <button type="button"
-  onclick="downloadPDF()"
-  style="
-    background:#2e7d32;
-    color:#fff;
-    padding:12px 20px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-  ">
-  Download ID PDF
-</button>
-        </button>
-
-        <button type="submit"
-          style="
-            background:#0d47a1;
-            color:#fff;
-            padding:12px 20px;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
-            font-weight:bold;
-          ">
-          Submit Registration
-        </button>
-
-      </div>
-
-      <!-- RESULT -->
-      <p id="idResult" style="margin-top:20px;font-weight:bold;color:green;"></p>
-
-    </form>
+<!-- POPUP -->
+<div id="popup">
+  <div class="popup-box">
+    <h2 style="color:green;">✅ Success</h2>
+    <p>Registration Completed</p>
+    <p id="popupID"></p>
+    <button onclick="closePopup()" class="btn dark">OK</button>
   </div>
-</section>
-
-<!-- ID GENERATOR SCRIPT -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</div>
 
 <script>
-function generateID() {
-  const id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
-  document.getElementById("idResult").innerText =
-    "Generated Member ID: " + id;
+let userPhoto = "";
+let currentID = "";
 
-  document.getElementById("memberForm").setAttribute("data-id", id);
+document.getElementById("photoInput").addEventListener("change", function(e){
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(event){
+    userPhoto = event.target.result;
+  }
+  reader.readAsDataURL(file);
+});
+
+function generateID(){
+  currentID = "APSPEWA-" + Math.floor(100000 + Math.random()*900000);
+  document.getElementById("idResult").innerText = "Member ID: " + currentID;
 }
 
-// Show popup on form submit
-document.getElementById("memberForm").addEventListener("submit", function(e) {
+document.getElementById("memberForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  let id = this.getAttribute("data-id");
-
-  if (!id) {
-    id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
+  if(!currentID){
+    currentID = "APSPEWA-" + Math.floor(100000 + Math.random()*900000);
   }
 
-  document.getElementById("popupID").innerText = "ID: " + id;
+  document.getElementById("popupID").innerText = "ID: " + currentID;
 
-  document.getElementById("successPopup").style.display = "flex";
+  document.getElementById("popup").style.display = "flex";
 
   this.reset();
 });
 
-// close popup
-function closePopup() {
-  document.getElementById("successPopup").style.display = "none";
-}
-</script>
-<!-- GALLERY -->
-<section id="gallery">
-<h2 class="section-title">Gallery</h2>
-
-<div class="gallery">
-
-<img src="images/1.jpg">
-<img src="images/2.jpg">
-<img src="images/3.jpg">
-<img src="images/4.jpg">
-
-</div>
-</section>
-
-<footer>
-© 2026 APSPEWA | All Rights Reserved
-</footer>
-
-<script>
-
-let generatedID = "";
-let photoData = "";
-
-/* PHOTO READ */
-document.getElementById("photo").addEventListener("change", function(e){
-let reader = new FileReader();
-reader.onload = function(){
-photoData = reader.result;
-}
-reader.readAsDataURL(e.target.files[0]);
-});
-
-/* GENERATE ID */
-function generateID(){
-generatedID = "APSPEWA-" + Math.floor(Math.random()*999999);
-
-document.getElementById("idCard").style.display="block";
-
-document.getElementById("idCard").innerHTML = `
-<h3>Digital ID Card</h3>
-${photoData ? `<img src="${photoData}" style="width:100px;height:100px;border-radius:10px;">` : ""}
-<p><b>ID:</b> ${generatedID}</p>
-<p><b>Name:</b> ${document.getElementById("name").value}</p>
-<p><b>Village:</b> ${document.getElementById("village").value}</p>
-<p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
-document.getElementById("idCard").innerHTML = `
-<h3>Digital ID Card</h3>
-${photoData ? `<img src="${photoData}" style="width:100px;height:100px;border-radius:10px;">` : ""}
-<p><b>ID:</b> ${generatedID}</p>
-<p><b>Name:</b> ${document.getElementById("name").value}</p>
-<p><b>Village:</b> ${document.getElementById("village").value}</p>
-<p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
-`;
-;
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
 }
 
-/* PDF DOWNLOAD */
 function downloadPDF(){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
+  const form = document.getElementById("memberForm");
+  const inputs = form.querySelectorAll("input");
 
-doc.setFontSize(16);
-doc.text("APSPEWA DIGITAL ID CARD", 20, 20);
+  doc.text("APSPEWA MEMBER ID CARD", 20, 20);
+  doc.text("Member ID: " + currentID, 20, 40);
 
-doc.text("ID: " + generatedID, 20, 40);
-doc.text("Name: " + document.getElementById("name").value, 20, 50);
-doc.text("Phone: " + document.getElementById("phone").value, 20, 60);
-doc.text("Village: " + document.getElementById("village").value, 20, 70);
-doc.text("Mandal: " + document.getElementById("mandal").value, 20, 80);
-doc.text("District: " + document.getElementById("district").value, 20, 90);
-doc.text("State: " + document.getElementById("state").value, 20, 100);
+  doc.text("Name: " + inputs[0].value, 20, 50);
+  doc.text("Father: " + inputs[1].value, 20, 60);
+  doc.text("Email: " + inputs[2].value, 20, 70);
+  doc.text("Mobile: " + inputs[3].value, 20, 80);
+  doc.text("Mandal: " + inputs[4].value, 20, 90);
+  doc.text("District: " + inputs[5].value, 20, 100);
 
-if(photoData){
-doc.addImage(photoData,"JPEG",150,30,40,40);
-}
+  if(userPhoto){
+    doc.addImage(userPhoto,"JPEG",140,30,50,50);
+  }
 
-doc.save(generatedID + ".pdf");
-}
-
-/* WHATSAPP SHARE */
-function whatsappShare(){
-let msg = `APSPEWA ID CARD\nID: ${generatedID}\nName: ${document.getElementById("name").value}`;
-let url = "https://wa.me/?text=" + encodeURIComponent(msg);
-window.open(url,"_blank");
+  doc.save(currentID + ".pdf");
 }
 
 </script>
 
 </body>
-  <div id="successPopup"
-  style="
-    display:none;
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-  ">
-
-  <div style="
-      background:#fff;
-      padding:30px;
-      border-radius:15px;
-      text-align:center;
-      width:300px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    ">
-
-    <h2 style="color:green;">✅ Success</h2>
-    <p>Registration Completed Successfully</p>
-    <p id="popupID" style="font-weight:bold;color:#0d47a1;"></p>
-
-    <button onclick="closePopup()"
-      style="
-        margin-top:15px;
-        padding:10px 15px;
-        background:#0d47a1;
-        color:#fff;
-        border:none;
-        border-radius:8px;
-        cursor:pointer;
-      ">
-      OK
-    </button>
-
-  </div>
-</div>
 </html>
