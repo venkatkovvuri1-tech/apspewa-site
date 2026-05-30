@@ -16,7 +16,7 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial;
 }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 body{
 background:#f4f8ff;
 color:#003366;
@@ -382,37 +382,36 @@ function downloadPDF() {
 
   const inputs = form.querySelectorAll("input");
 
-  const name = inputs[0].value || "-";
-  const father = inputs[1].value || "-";
-  const email = inputs[2].value || "-";
-  const mobile = inputs[3].value || "-";
-  const mandal = inputs[4].value || "-";
-  const district = inputs[5].value || "-";
-  const state = inputs[6].value || "-";
-  const pincode = inputs[7].value || "-";
+  let name = inputs[0]?.value || "";
+  let father = inputs[1]?.value || "";
+  let email = inputs[2]?.value || "";
+  let mobile = inputs[3]?.value || "";
+  let mandal = inputs[4]?.value || "";
+  let district = inputs[5]?.value || "";
+  let state = inputs[6]?.value || "";
+  let pincode = inputs[7]?.value || "";
 
   if (!currentID) {
     currentID = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
   }
 
-  // TITLE
   doc.setFontSize(16);
   doc.text("APSPEWA MEMBERSHIP ID CARD", 20, 20);
 
   doc.setFontSize(12);
 
-  doc.text("Member ID: " + currentID, 20, 35);
-  doc.text("Name: " + name, 20, 45);
-  doc.text("Father: " + father, 20, 55);
-  doc.text("Email: " + email, 20, 65);
-  doc.text("Mobile: " + mobile, 20, 75);
-  doc.text("Mandal: " + mandal, 20, 85);
-  doc.text("District: " + district, 20, 95);
-  doc.text("State: " + state, 20, 105);
-  doc.text("Pincode: " + pincode, 20, 115);
+  doc.text("Member ID: " + currentID, 20, 40);
+  doc.text("Name: " + name, 20, 50);
+  doc.text("Father: " + father, 20, 60);
+  doc.text("Email: " + email, 20, 70);
+  doc.text("Mobile: " + mobile, 20, 80);
+  doc.text("Mandal: " + mandal, 20, 90);
+  doc.text("District: " + district, 20, 100);
+  doc.text("State: " + state, 20, 110);
+  doc.text("Pincode: " + pincode, 20, 120);
 
-  // PHOTO FIX (IMPORTANT)
-  if (userPhoto && userPhoto.length > 100) {
+  // PHOTO SAFE FIX
+  if (typeof userPhoto !== "undefined" && userPhoto) {
     try {
       doc.addImage(userPhoto, "JPEG", 140, 30, 50, 50);
     } catch (e) {
@@ -420,18 +419,18 @@ function downloadPDF() {
     }
   }
 
-  doc.text("Official APSPEWA Membership", 20, 135);
+  doc.text("Official APSPEWA Membership", 20, 140);
 
-  doc.save(currentID + "_ID.pdf");
+  doc.save(currentID + "_membership.pdf");
 }
-
 /* WHATSAPP SHARE */
 function whatsappShare(){
 let msg = `APSPEWA ID CARD\nID: ${generatedID}\nName: ${document.getElementById("name").value}`;
 let url = "https://wa.me/?text=" + encodeURIComponent(msg);
 window.open(url,"_blank");
 }
-
+let userPhoto = "";
+let currentID = "";
 </script>
 
 </body>
