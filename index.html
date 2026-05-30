@@ -229,10 +229,13 @@ footer {
 <script>
 function generateID() {
   let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
   let phone = document.getElementById("phone").value;
+  let mandal = document.getElementById("mandal").value;
   let district = document.getElementById("district").value;
+  let state = document.getElementById("state").value;
 
-  if(!name || !phone || !district){
+  if(!name || !email || !phone || !mandal || !district || !state){
     alert("Please fill all fields");
     return;
   }
@@ -242,15 +245,21 @@ function generateID() {
   document.getElementById("idOutput").innerHTML = `
     <div class="id-card" id="card">
       <h3>APSPEWA MEMBER ID</h3>
-      <p><b>Name:</b> ${name}</p>
-      <p><b>Phone:</b> ${phone}</p>
-      <p><b>District:</b> ${district}</p>
+
       <p><b>ID:</b> ${id}</p>
+      <p><b>Name:</b> ${name}</p>
+      <p><b>Email:</b> ${email}</p>
+      <p><b>Phone:</b> ${phone}</p>
+      <p><b>Mandal:</b> ${mandal}</p>
+      <p><b>District:</b> ${district}</p>
+      <p><b>State:</b> ${state}</p>
     </div>
+
     <br><br>
     <button onclick="downloadCard()">Download ID Card</button>
   `;
 }
+</script>
 
 function downloadCard() {
   let content = document.getElementById("card").innerHTML;
