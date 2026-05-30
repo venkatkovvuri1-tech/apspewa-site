@@ -376,6 +376,66 @@ doc.save("APSPEWA_ID_CARD.pdf");
 }
 
 </script>
+<!-- GALLERY SECTION START -->
+<section id="gallery" class="gallery-section">
+  <div class="section-title">
+    <h2>Our Gallery</h2>
+    <p>Moments, Events & Activities</p>
+  </div>
 
+  <div class="gallery-grid">
+    <img src="images/1.jpg" alt="Gallery Image 1">
+    <img src="images/2.jpg" alt="Gallery Image 2">
+    <img src="images/3.jpg" alt="Gallery Image 3">
+    <img src="images/4.jpg" alt="Gallery Image 4">
+    <img src="images/5.jpg" alt="Gallery Image 5">
+    <img src="images/6.jpg" alt="Gallery Image 6">
+  </div>
+</section>
+<!-- GALLERY SECTION END -->
+
+<style>
+/* SECTION STYLE */
+.gallery-section {
+  padding: 80px 20px;
+  background: #f5f8ff;
+  text-align: center;
+}
+
+/* TITLE */
+.section-title h2 {
+  font-size: 36px;
+  color: #002d62;
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* IMAGES */
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+</style>
 </body>
 </html>
