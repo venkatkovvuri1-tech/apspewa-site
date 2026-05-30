@@ -174,29 +174,104 @@ provide identity cards, and support organized community development with transpa
 
 <!-- REGISTER -->
 <section id="register">
-<h2 class="section-title">Membership Registration</h2>
+<section id="register" style="padding:60px 20px; background:#f4f9ff;">
+  <div style="max-width:900px; margin:auto;">
 
-<div class="form-box">
+    <h2 style="text-align:center; color:#0d47a1; font-size:32px; margin-bottom:10px;">
+      Membership Registration
+    </h2>
+    <p style="text-align:center; color:#555; margin-bottom:30px;">
+      Join APSPEWA official membership portal
+    </p>
 
-<input type="text" id="name" placeholder="Full Name">
-<input type="email" id="email" placeholder="Email ID">
-<input type="text" id="phone" placeholder="Phone Number">
-<input type="text" id="village" placeholder="Village">
-<input type="text" id="mandal" placeholder="Mandal">
-<input type="text" id="district" placeholder="District">
-<input type="text" id="state" placeholder="State">
+    <form id="memberForm"
+      style="
+        background:#ffffff;
+        padding:30px;
+        border-radius:18px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.1);
+        border-top:6px solid #1976d2;
+      ">
 
-<!-- PHOTO -->
-<label><b>Upload Photo</b></label>
-<input type="file" id="photo" accept="image/*">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
 
-<button onclick="generateID()">Generate ID Card</button>
-<button onclick="downloadPDF()">Download PDF ID</button>
-<button onclick="whatsappShare()">Share on WhatsApp</button>
+        <input type="text" placeholder="Full Name" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
 
-<div id="idCard" class="id-card"></div>
-</div>
+        <input type="text" placeholder="Father / Guardian Name" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+        <input type="email" placeholder="Email ID" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+        <input type="tel" placeholder="Mobile Number" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+        <input type="text" placeholder="Mandal" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+        <input type="text" placeholder="District" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+        <input type="text" placeholder="State" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+        <input type="text" placeholder="Pincode" required
+          style="padding:12px;border:1px solid #ccc;border-radius:10px;">
+
+      </div>
+
+      <textarea placeholder="Address"
+        style="margin-top:20px;width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;height:90px;"></textarea>
+
+      <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap;">
+
+        <input type="file" accept="image/*"
+          style="padding:10px; border:1px solid #ccc; border-radius:10px; background:#fff;">
+
+        <button type="button"
+          onclick="generateID()"
+          style="
+            background:#1976d2;
+            color:#fff;
+            padding:12px 20px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:bold;
+          ">
+          Generate ID
+        </button>
+
+        <button type="submit"
+          style="
+            background:#0d47a1;
+            color:#fff;
+            padding:12px 20px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:bold;
+          ">
+          Submit Registration
+        </button>
+
+      </div>
+
+      <p id="idResult"
+        style="margin-top:20px; font-weight:bold; color:green;"></p>
+
+    </form>
+  </div>
 </section>
+
+<script>
+function generateID() {
+  const id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
+  document.getElementById("idResult").innerText =
+    "Generated Member ID: " + id;
+}
+</script>
 
 <!-- GALLERY -->
 <section id="gallery">
