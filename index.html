@@ -144,7 +144,9 @@ button {
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-
+<button onclick="downloadPDF()" class="btn">
+  Download ID Card PDF
+</button>
 .card-header {
   background: linear-gradient(90deg, #1a237e, #3949ab);
   color: white;
@@ -275,6 +277,47 @@ function submitForm() {
 
   return false;
 }
+  <script>
+function downloadPDF() {
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let name = document.getElementById("cardName").innerText;
+  let email = document.getElementById("cardEmail").innerText;
+  let address = document.getElementById("cardAddress").innerText;
+  let id = document.getElementById("memberId").innerText;
+
+  if (!name || !id) {
+    alert("Please register first to generate ID");
+    return;
+  }
+
+  // DESIGN PDF
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(18);
+  doc.text("APSPEWA ID CARD", 70, 20);
+
+  doc.setFontSize(12);
+  doc.text("Official Employee Welfare Portal", 60, 30);
+
+  doc.line(20, 35, 190, 35);
+
+  doc.setFontSize(14);
+  doc.text("Name: " + name, 20, 50);
+  doc.text("Email: " + email, 20, 60);
+  doc.text("Address: " + address, 20, 70);
+  doc.text("Member ID: " + id, 20, 80);
+
+  doc.line(20, 90, 190, 90);
+
+  doc.setFontSize(10);
+  doc.text("This is a system generated ID card of APSPEWA.", 20, 110);
+
+  // DOWNLOAD FILE
+  doc.save("APSPEWA_ID_CARD.pdf");
+}
+</script>
 </script>
 
 </body>
