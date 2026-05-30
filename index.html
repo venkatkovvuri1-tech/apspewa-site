@@ -264,6 +264,25 @@ doc.addImage(photoData, "JPEG", 140, 30, 50, 50);
 doc.save(generatedID + ".pdf");
 }
 </script>
+<section id="gallery" style="padding:50px 20px;background:#f4f8ff;">
+  <h2 style="text-align:center;color:#0057b7;margin-bottom:20px;">
+    Gallery
+  </h2>
 
+  <div style="
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    max-width:1000px;
+    margin:auto;
+  ">
+
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+
+  </div>
+</section>
 </body>
 </html>
