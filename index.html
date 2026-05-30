@@ -173,13 +173,14 @@ provide identity cards, and support organized community development with transpa
 </section>
 
 <!-- REGISTER -->
-<section id="register">
+
 <section id="register" style="padding:60px 20px; background:#f4f9ff;">
   <div style="max-width:900px; margin:auto;">
 
     <h2 style="text-align:center; color:#0d47a1; font-size:32px; margin-bottom:10px;">
       Membership Registration
     </h2>
+
     <p style="text-align:center; color:#555; margin-bottom:30px;">
       Join APSPEWA official membership portal
     </p>
@@ -193,6 +194,7 @@ provide identity cards, and support organized community development with transpa
         border-top:6px solid #1976d2;
       ">
 
+      <!-- GRID FIELDS -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
 
         <input type="text" placeholder="Full Name" required
@@ -221,13 +223,15 @@ provide identity cards, and support organized community development with transpa
 
       </div>
 
-      <textarea placeholder="Address"
+      <!-- ADDRESS -->
+      <textarea placeholder="Full Address"
         style="margin-top:20px;width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;height:90px;"></textarea>
 
-      <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap;">
+      <!-- UPLOAD + BUTTONS -->
+      <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; align-items:center;">
 
         <input type="file" accept="image/*"
-          style="padding:10px; border:1px solid #ccc; border-radius:10px; background:#fff;">
+          style="padding:10px;border:1px solid #ccc;border-radius:10px;background:#fff;">
 
         <button type="button"
           onclick="generateID()"
@@ -258,13 +262,14 @@ provide identity cards, and support organized community development with transpa
 
       </div>
 
-      <p id="idResult"
-        style="margin-top:20px; font-weight:bold; color:green;"></p>
+      <!-- RESULT -->
+      <p id="idResult" style="margin-top:20px;font-weight:bold;color:green;"></p>
 
     </form>
   </div>
 </section>
 
+<!-- ID GENERATOR SCRIPT -->
 <script>
 function generateID() {
   const id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
