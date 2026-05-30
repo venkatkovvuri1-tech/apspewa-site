@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,81 +6,116 @@
 <title>APSPEWA - Empowering Employees</title>
 
 <style>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background: #f4f6ff;
+}
+
+body {
+  background: #f4f7ff;
+  color: #222;
 }
 
 /* HEADER */
 header {
-  background: #1a237e;
+  background: linear-gradient(90deg, #1a237e, #3949ab);
   color: white;
-  padding: 15px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-nav a {
+/* HERO (REPLACED & FIXED) */
+.hero {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: linear-gradient(rgba(26,35,126,0.85), rgba(57,73,171,0.85)),
+              url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size: cover;
+  background-position: center;
   color: white;
-  margin: 0 10px;
-  text-decoration: none;
+  padding: 20px;
 }
 
-  <section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to APSPEWA</h1>
+.hero h1 {
+  font-size: 54px;
+  margin-bottom: 15px;
+}
 
-    <p>
-      Empowering employees and building a stronger professional community
-      through innovation, support, and development.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#about" class="btn">Explore More</a>
-      <a href="#register" class="btn btn-outline">Join Now</a>
-    </div>
-  </div>
-</section>
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #1a237e, #3949ab);
-  color: white;
+.hero p {
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .btn {
-  background: #ffca28;
-  padding: 10px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: black;
   display: inline-block;
-  margin-top: 10px;
+  padding: 12px 25px;
+  background: #ffca28;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 /* SECTIONS */
 .section {
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
+}
+
+.section h2 {
+  font-size: 34px;
+  color: #1a237e;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* FORM */
 .form input {
-  display: block;
   width: 90%;
   max-width: 400px;
+  padding: 12px;
   margin: 10px auto;
-  padding: 10px;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   background: #1a237e;
   color: white;
   border: none;
+  border-radius: 25px;
   cursor: pointer;
 }
 
@@ -90,7 +124,7 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -105,27 +139,28 @@ button {
 .id-card {
   background: white;
   max-width: 350px;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .card-header {
-  background: #1a237e;
+  background: linear-gradient(90deg, #1a237e, #3949ab);
   color: white;
   padding: 10px;
+  border-radius: 8px;
   font-weight: bold;
 }
 
 .profile-img {
   width: 80px;
   border-radius: 50%;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 /* WHATSAPP */
-.whatsapp-float {
+.whatsapp {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -133,7 +168,9 @@ button {
 
 /* MOBILE */
 @media(max-width:600px){
-  nav { display:none; }
+  .hero h1 {
+    font-size: 32px;
+  }
 }
 </style>
 </head>
@@ -141,23 +178,31 @@ button {
 <body>
 
 <header>
-  <div><b>APSPEWA</b></div>
+  <b>APSPEWA</b>
 </header>
 
-<!-- HERO -->
+<!-- HERO (FIXED) -->
 <section class="hero" id="home">
-  <div class="hero-content">
+  <div>
     <h1>Welcome to APSPEWA</h1>
+    <p>Empowering employees and building a stronger professional community through innovation, support, and growth.</p>
+    <a href="#register" class="btn">Join Now</a>
+  </div>
+</section>
 
-    <p>
-      Empowering employees and building a stronger professional community
-      through innovation, support, and development.
-    </p>
+<!-- ABOUT -->
+<section class="section">
+  <h2>About Us</h2>
+  <p>APSPEWA supports employee growth, training, and community development.</p>
+</section>
 
-    <div class="hero-buttons">
-      <a href="#about" class="btn">Explore More</a>
-      <a href="#register" class="btn btn-outline">Join Now</a>
-    </div>
+<!-- FEATURES -->
+<section class="section">
+  <h2>Features</h2>
+  <div class="grid">
+    <div class="card">Training Programs</div>
+    <div class="card">Community Support</div>
+    <div class="card">Career Growth</div>
   </div>
 </section>
 
@@ -185,28 +230,24 @@ button {
 
   <p id="msg"></p>
 
-  <!-- ID CARD -->
   <div class="id-card">
     <div class="card-header">APSPEWA ID CARD</div>
-
     <img class="profile-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-
     <h3 id="cardName">Name</h3>
     <p id="cardEmail">Email</p>
     <p id="cardAddress">Address</p>
-
-    <h4>ID: <span id="memberId"></span></h4>
+    <h3>ID: <span id="memberId"></span></h3>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="section">
   <h2>Contact</h2>
-  <p>Phone: +91 7899341629</p>
+  <p>📞 +91 7899341629</p>
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/917899341629" class="whatsapp-float">
+<a href="https://wa.me/917899341629" class="whatsapp">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60">
 </a>
 
@@ -217,19 +258,17 @@ function submitForm() {
   let email = document.getElementById("email").value;
   let address = document.getElementById("address").value;
 
-  if(name === "" || email === "" || address === ""){
+  if(!name || !email || !address){
     alert("Please fill all fields");
     return false;
   }
 
-  // Generate ID
-  let memberId = "APS" + Date.now().toString().slice(-6);
+  let id = "APS" + Math.floor(100000 + Math.random() * 900000);
 
-  // Fill card
   document.getElementById("cardName").innerText = name;
   document.getElementById("cardEmail").innerText = email;
   document.getElementById("cardAddress").innerText = address;
-  document.getElementById("memberId").innerText = memberId;
+  document.getElementById("memberId").innerText = id;
 
   document.getElementById("msg").innerText =
     "Registration successful! ID generated.";
