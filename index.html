@@ -283,14 +283,7 @@ provide identity cards, and support organized community development with transpa
 </section>
 
 <!-- ID GENERATOR SCRIPT -->
-<script>
-function generateID() {
-  const id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
-  document.getElementById("idResult").innerText =
-    "Generated Member ID: " + id;
-}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
 function generateID() {
@@ -336,7 +329,6 @@ function downloadPDF() {
 
   doc.save(id + "_membership.pdf");
 }
-</script>
 </script>
 
 <!-- GALLERY -->
