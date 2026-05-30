@@ -33,37 +33,138 @@ header{
 }
 
 /* HERO */
-.hero{
-  background:linear-gradient(rgba(13,71,161,0.85), rgba(25,118,210,0.85)),
-  url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
-  background-size:cover;
-  background-position:center;
-  color:white;
-  text-align:center;
-  padding:90px 20px;
+<!-- HERO SECTION START -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>Welcome to APSPEWA</h1>
+    <p>
+      Empowering members with transparency, unity, and digital services.
+      Join our association and access your digital ID, updates, and member services.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#register" class="btn primary">Get Membership</a>
+      <a href="#about" class="btn secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+<!-- HERO SECTION END -->
+
+<style>
+/* HERO WRAPPER */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d") no-repeat center center/cover;
+  overflow: hidden;
 }
 
-.hero h1{
-  font-size:40px;
+/* DARK OVERLAY */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 45, 98, 0.85),
+    rgba(0, 0, 0, 0.65)
+  );
 }
 
-.hero p{
-  margin-top:10px;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
+/* CONTENT */
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  padding: 20px;
+  z-index: 2;
+  animation: fadeUp 1s ease-in-out;
 }
 
-.btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:10px 20px;
-  background:#ffca28;
-  color:black;
-  text-decoration:none;
-  border-radius:5px;
-  font-weight:bold;
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #e6e6e6;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn.primary {
+  background: #00aaff;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+}
+
+.btn.primary:hover {
+  background: #008ecc;
+  transform: translateY(-3px);
+}
+
+.btn.secondary {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn.secondary:hover {
+  background: #fff;
+  color: #002d62;
+  transform: translateY(-3px);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+}
+</style>
 
 /* SECTIONS */
 .section{
