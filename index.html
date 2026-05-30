@@ -290,47 +290,32 @@ function generateID() {
   const id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
   document.getElementById("idResult").innerText =
     "Generated Member ID: " + id;
+
   document.getElementById("memberForm").setAttribute("data-id", id);
 }
 
-function downloadPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+// Show popup on form submit
+document.getElementById("memberForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-  const form = document.getElementById("memberForm");
+  let id = this.getAttribute("data-id");
 
-  const name = form.querySelector('input[placeholder="Full Name"]').value;
-  const mobile = form.querySelector('input[placeholder="Mobile Number"]').value;
-  const email = form.querySelector('input[placeholder="Email ID"]').value;
-  const mandal = form.querySelector('input[placeholder="Mandal"]').value;
-  const district = form.querySelector('input[placeholder="District"]').value;
-  const state = form.querySelector('input[placeholder="State"]').value;
-  const pincode = form.querySelector('input[placeholder="Pincode"]').value;
-
-  let id = form.getAttribute("data-id");
   if (!id) {
     id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
   }
 
-  doc.setFontSize(16);
-  doc.text("APSPEWA MEMBERSHIP ID CARD", 20, 20);
+  document.getElementById("popupID").innerText = "ID: " + id;
 
-  doc.setFontSize(12);
-  doc.text("Member ID: " + id, 20, 40);
-  doc.text("Name: " + name, 20, 50);
-  doc.text("Mobile: " + mobile, 20, 60);
-  doc.text("Email: " + email, 20, 70);
-  doc.text("Mandal: " + mandal, 20, 80);
-  doc.text("District: " + district, 20, 90);
-  doc.text("State: " + state, 20, 100);
-  doc.text("Pincode: " + pincode, 20, 110);
+  document.getElementById("successPopup").style.display = "flex";
 
-  doc.text("Official APSPEWA Membership", 20, 130);
+  this.reset();
+});
 
-  doc.save(id + "_membership.pdf");
+// close popup
+function closePopup() {
+  document.getElementById("successPopup").style.display = "none";
 }
 </script>
-
 <!-- GALLERY -->
 <section id="gallery">
 <h2 class="section-title">Gallery</h2>
@@ -421,4 +406,44 @@ window.open(url,"_blank");
 </script>
 
 </body>
+  <div id="successPopup"
+  style="
+    display:none;
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+  ">
+
+  <div style="
+      background:#fff;
+      padding:30px;
+      border-radius:15px;
+      text-align:center;
+      width:300px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    ">
+
+    <h2 style="color:green;">✅ Success</h2>
+    <p>Registration Completed Successfully</p>
+    <p id="popupID" style="font-weight:bold;color:#0d47a1;"></p>
+
+    <button onclick="closePopup()"
+      style="
+        margin-top:15px;
+        padding:10px 15px;
+        background:#0d47a1;
+        color:#fff;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+      ">
+      OK
+    </button>
+
+  </div>
+</div>
 </html>
