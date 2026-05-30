@@ -5,123 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APSPEWA Portal</title>
 
-<!-- jsPDF Library -->
+<!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
 body{
-    background:#f4f8ff;
-    color:#003366;
+background:#f4f8ff;
+color:#003366;
 }
 
 /* NAV */
 header{
-    background: linear-gradient(90deg,#0057b7,#007bff);
-    padding:15px;
-    position:sticky;
-    top:0;
+background:linear-gradient(90deg,#0057b7,#007bff);
+padding:15px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 nav{
-    display:flex;
-    justify-content:space-between;
-    color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
 }
 
 nav ul{
-    display:flex;
-    gap:20px;
-    list-style:none;
+display:flex;
+gap:20px;
+list-style:none;
 }
 
 nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+color:white;
+text-decoration:none;
+font-weight:bold;
 }
 
 /* HERO */
 .hero{
-    height:80vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background:linear-gradient(rgba(0,87,183,0.8),rgba(255,255,255,0.9)),
-    url('https://images.unsplash.com/photo-1529070538774-1843cb3265df') center/cover;
-    color:white;
-    padding:20px;
+height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:linear-gradient(rgba(0,87,183,0.8),rgba(255,255,255,0.9)),
+url('https://images.unsplash.com/photo-1529070538774-1843cb3265df') center/cover;
+color:white;
+padding:20px;
 }
 
-.hero h2{font-size:40px;}
+.hero h2{
+font-size:40px;
+}
 
-/* SECTION */
-section{padding:50px 20px;}
+.hero p{
+max-width:700px;
+margin-top:10px;
+}
+
+/* SECTIONS */
+section{
+padding:50px 20px;
+}
 
 .section-title{
-    text-align:center;
-    font-size:28px;
-    color:#0057b7;
-    margin-bottom:20px;
+text-align:center;
+font-size:28px;
+margin-bottom:20px;
+color:#0057b7;
 }
 
 /* FORM */
 .form-box{
-    max-width:600px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-    <input type="file" id="photo" accept="image/*">
+max-width:650px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 input{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
 }
 
 button{
-    width:100%;
-    padding:10px;
-    background:#0057b7;
-    color:white;
-    border:none;
-    margin-top:10px;
-    cursor:pointer;
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+background:#0057b7;
+color:white;
+font-weight:bold;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#003f8a;
 }
 
 /* ID CARD */
 .id-card{
-    display:none;
-    margin-top:20px;
-    padding:15px;
-    border-left:5px solid #0057b7;
-    background:#e6f0ff;
+margin-top:15px;
+padding:15px;
+background:#e6f0ff;
+border-left:5px solid #0057b7;
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
 }
 
 /* FOOTER */
 footer{
-    text-align:center;
-    padding:20px;
-    background:#0057b7;
-    color:white;
+text-align:center;
+padding:20px;
+background:#0057b7;
+color:white;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <header>
 <nav>
 <h2>APSPEWA</h2>
@@ -137,27 +165,34 @@ footer{
 <section class="hero" id="home">
 <div>
 <h2>Welcome to APSPEWA Portal</h2>
-<p>Community welfare & digital membership system with ID card generation</p>
+<p>
+APSPEWA is a community empowerment and welfare association platform designed to connect members digitally,
+provide identity cards, and support organized community development with transparency and trust.
+</p>
 </div>
 </section>
 
 <!-- REGISTER -->
 <section id="register">
-<h2 class="section-title">Member Registration</h2>
+<h2 class="section-title">Membership Registration</h2>
 
 <div class="form-box">
-<form id="regForm">
 
-<input type="text" id="name" placeholder="Full Name" required>
-<input type="email" id="email" placeholder="Email" required>
-<input type="text" id="phone" placeholder="Phone" required>
-<input type="text" id="mandal" placeholder="Mandal" required>
-<input type="text" id="state" placeholder="State" required>
+<input type="text" id="name" placeholder="Full Name">
+<input type="email" id="email" placeholder="Email ID">
+<input type="text" id="phone" placeholder="Phone Number">
+<input type="text" id="village" placeholder="Village">
+<input type="text" id="mandal" placeholder="Mandal">
+<input type="text" id="district" placeholder="District">
+<input type="text" id="state" placeholder="State">
 
-<button type="button" onclick="generateID()">Generate ID</button>
-<button type="button" onclick="downloadPDF()">Download ID PDF</button>
+<!-- PHOTO -->
+<label><b>Upload Photo</b></label>
+<input type="file" id="photo" accept="image/*">
 
-</form>
+<button onclick="generateID()">Generate ID Card</button>
+<button onclick="downloadPDF()">Download PDF ID</button>
+<button onclick="whatsappShare()">Share on WhatsApp</button>
 
 <div id="idCard" class="id-card"></div>
 </div>
@@ -166,11 +201,12 @@ footer{
 <!-- GALLERY -->
 <section id="gallery">
 <h2 class="section-title">Gallery</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
-<img src="https://source.unsplash.com/400x300/?community" style="width:100%">
-<img src="https://source.unsplash.com/400x300/?meeting" style="width:100%">
-<img src="https://source.unsplash.com/400x300/?education" style="width:100%">
-<img src="https://source.unsplash.com/400x300/?india" style="width:100%">
+
+<div class="gallery">
+<img src="https://source.unsplash.com/400x300/?community">
+<img src="https://source.unsplash.com/400x300/?meeting">
+<img src="https://source.unsplash.com/400x300/?education">
+<img src="https://source.unsplash.com/400x300/?india">
 </div>
 </section>
 
@@ -179,75 +215,67 @@ footer{
 </footer>
 
 <script>
+
 let generatedID = "";
-let photoDataURL = "";
+let photoData = "";
 
-
-// ===== READ PHOTO =====
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("photo").addEventListener("change", function (event) {
-        const file = event.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photoDataURL = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+/* PHOTO READ */
+document.getElementById("photo").addEventListener("change", function(e){
+let reader = new FileReader();
+reader.onload = function(){
+photoData = reader.result;
+}
+reader.readAsDataURL(e.target.files[0]);
 });
 
-
-// ===== GENERATE ID =====
+/* GENERATE ID */
 function generateID(){
-    generatedID = "APSPEWA-" + Math.floor(Math.random()*1000000);
+generatedID = "APSPEWA-" + Math.floor(Math.random()*999999);
 
-    document.getElementById("idCard").style.display = "block";
-    document.getElementById("idCard").innerHTML = `
-        <h3>Member ID Card</h3>
-        ${photoDataURL ? `<img src="${photoDataURL}" style="width:100px;height:100px;border-radius:10px;">` : ""}
-        <p><b>ID:</b> ${generatedID}</p>
-        <p><b>Name:</b> ${document.getElementById("name").value}</p>
-        <p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
-        <p>Status: ACTIVE MEMBER</p>
-        <input type="file" id="photo" accept="image/*" required>
-    `;
+document.getElementById("idCard").style.display="block";
+
+document.getElementById("idCard").innerHTML = `
+<h3>Digital ID Card</h3>
+${photoData ? `<img src="${photoData}" style="width:100px;height:100px;border-radius:10px;">` : ""}
+<p><b>ID:</b> ${generatedID}</p>
+<p><b>Name:</b> ${document.getElementById("name").value}</p>
+<p><b>Village:</b> ${document.getElementById("village").value}</p>
+<p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
+<p>Status: ACTIVE MEMBER</p>
+`;
 }
 
-
-// ===== DOWNLOAD PDF =====
+/* PDF DOWNLOAD */
 function downloadPDF(){
 
-    if(!generatedID){
-        alert("Generate ID first!");
-        return;
-    }
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+doc.setFontSize(16);
+doc.text("APSPEWA DIGITAL ID CARD", 20, 20);
 
-    doc.setFontSize(16);
-    doc.text("APSPEWA MEMBER ID CARD", 20, 20);
+doc.text("ID: " + generatedID, 20, 40);
+doc.text("Name: " + document.getElementById("name").value, 20, 50);
+doc.text("Phone: " + document.getElementById("phone").value, 20, 60);
+doc.text("Village: " + document.getElementById("village").value, 20, 70);
+doc.text("Mandal: " + document.getElementById("mandal").value, 20, 80);
+doc.text("District: " + document.getElementById("district").value, 20, 90);
+doc.text("State: " + document.getElementById("state").value, 20, 100);
 
-    // TEXT DATA
-    doc.setFontSize(12);
-    doc.text("ID: " + generatedID, 20, 40);
-    doc.text("Name: " + document.getElementById("name").value, 20, 50);
-    doc.text("Email: " + document.getElementById("email").value, 20, 60);
-    doc.text("Phone: " + document.getElementById("phone").value, 20, 70);
-    doc.text("Mandal: " + document.getElementById("mandal").value, 20, 80);
-    doc.text("State: " + document.getElementById("state").value, 20, 90);
-
-    doc.text("STATUS: ACTIVE MEMBER", 20, 110);
-
-    // PHOTO IN PDF
-    if(photoDataURL){
-        doc.addImage(photoDataURL, "JPEG", 150, 30, 40, 40);
-    }
-
-    doc.save(generatedID + "_APSPEWA_ID.pdf");
+if(photoData){
+doc.addImage(photoData,"JPEG",150,30,40,40);
 }
+
+doc.save(generatedID + ".pdf");
+}
+
+/* WHATSAPP SHARE */
+function whatsappShare(){
+let msg = `APSPEWA ID CARD\nID: ${generatedID}\nName: ${document.getElementById("name").value}`;
+let url = "https://wa.me/?text=" + encodeURIComponent(msg);
+window.open(url,"_blank");
+}
+
 </script>
 
 </body>
