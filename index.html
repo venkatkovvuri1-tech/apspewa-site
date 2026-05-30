@@ -80,6 +80,7 @@ section{padding:50px 20px;}
     padding:20px;
     border-radius:10px;
     box-shadow:0 0 10px rgba(0,0,0,0.1);
+    <input type="file" id="photo" accept="image/*">
 }
 
 input{
@@ -179,13 +180,33 @@ footer{
 
 <script>
 let generatedID = "";
+let photoDataURL = "";
 
+
+// ===== READ PHOTO =====
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("photo").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                photoDataURL = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+
+// ===== GENERATE ID =====
 function generateID(){
     generatedID = "APSPEWA-" + Math.floor(Math.random()*1000000);
 
     document.getElementById("idCard").style.display = "block";
     document.getElementById("idCard").innerHTML = `
         <h3>Member ID Card</h3>
+        ${photoDataURL ? `<img src="${photoDataURL}" style="width:100px;height:100px;border-radius:10px;">` : ""}
         <p><b>ID:</b> ${generatedID}</p>
         <p><b>Name:</b> ${document.getElementById("name").value}</p>
         <p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
@@ -193,19 +214,22 @@ function generateID(){
     `;
 }
 
-/* ===== PDF DOWNLOAD ===== */
+
+// ===== DOWNLOAD PDF =====
 function downloadPDF(){
+
     if(!generatedID){
-        alert("Please generate ID first!");
+        alert("Generate ID first!");
         return;
     }
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    doc.setFontSize(18);
+    doc.setFontSize(16);
     doc.text("APSPEWA MEMBER ID CARD", 20, 20);
 
+    // TEXT DATA
     doc.setFontSize(12);
     doc.text("ID: " + generatedID, 20, 40);
     doc.text("Name: " + document.getElementById("name").value, 20, 50);
@@ -214,7 +238,12 @@ function downloadPDF(){
     doc.text("Mandal: " + document.getElementById("mandal").value, 20, 80);
     doc.text("State: " + document.getElementById("state").value, 20, 90);
 
-    doc.text("Status: ACTIVE MEMBER", 20, 110);
+    doc.text("STATUS: ACTIVE MEMBER", 20, 110);
+
+    // PHOTO IN PDF
+    if(photoDataURL){
+        doc.addImage(photoDataURL, "JPEG", 150, 30, 40, 40);
+    }
 
     doc.save(generatedID + "_APSPEWA_ID.pdf");
 }
