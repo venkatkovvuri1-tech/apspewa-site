@@ -1,271 +1,227 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APSPEWA Official Portal</title>
+<title>APSPEWA Portal</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
+/* ===== GLOBAL STYLE ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* NAVBAR */
-nav {
-  position: fixed;
-  width: 100%;
-  background: #002d62;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
+body{
+    background:#f4f8ff;
+    color:#003366;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: 600;
+/* ===== NAVBAR ===== */
+header{
+    background: linear-gradient(90deg, #0057b7, #007bff);
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  background: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d") center/cover no-repeat;
-  color: white;
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
+nav h1{
+    font-size:22px;
+    letter-spacing:1px;
 }
 
-.hero-content {
-  position: relative;
-  max-width: 800px;
-  padding: 30px;
-  border-radius: 18px;
-
-  /* 🌟 NEW BORDER STYLE */
-  border: 2px solid rgba(0, 170, 255, 0.6);
-  box-shadow: 0 0 25px rgba(0, 170, 255, 0.25);
-
-  /* glass effect */
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
-
-  animation: fadeUp 1s ease-in-out;
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
 }
 
-.hero h1 {
-  font-size: 48px;
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
 }
 
-.btn {
-  padding: 12px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 5px;
-  display: inline-block;
+/* ===== HERO SECTION ===== */
+.hero{
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background: linear-gradient(rgba(0,87,183,0.8), rgba(255,255,255,0.9)),
+    url('https://images.unsplash.com/photo-1529070538774-1843cb3265df') center/cover no-repeat;
+    color:white;
+    padding:20px;
 }
 
-.primary {
-  background: #00aaff;
-  color: white;
+.hero h2{
+    font-size:40px;
 }
 
-.secondary {
-  border: 2px solid white;
-  color: white;
+.hero p{
+    margin-top:15px;
+    font-size:18px;
+    max-width:700px;
 }
 
-/* SECTIONS */
-section {
-  padding: 80px 20px;
-  text-align: center;
+/* ===== SECTIONS ===== */
+section{
+    padding:60px 20px;
 }
 
-/* REGISTER */
-#register {
-  background: #f4f7ff;
+.section-title{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:30px;
+    color:#0057b7;
 }
 
-form {
-  max-width: 400px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* ===== REGISTER FORM ===== */
+.form-box{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.form-box input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
-button {
-  padding: 12px;
-  background: #002d62;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+button{
+    background:#0057b7;
+    color:white;
+    padding:10px;
+    border:none;
+    width:100%;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-/* ID CARD */
-.id-card {
-  margin-top: 20px;
-  padding: 20px;
-  border: 2px solid #002d62;
-  display: inline-block;
-  border-radius: 10px;
-  background: white;
+button:hover{
+    background:#003f8a;
 }
 
-/* GALLERY */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  max-width: 1000px;
-  margin: auto;
+/* ===== GALLERY ===== */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:15px;
 }
 
-.gallery-grid img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: 0.3s;
+.gallery img{
+    width:100%;
+    border-radius:10px;
 }
 
-.gallery-grid img:hover {
-  transform: scale(1.05);
+/* ===== ID CARD ===== */
+.id-card{
+    margin-top:20px;
+    padding:15px;
+    background:#e6f0ff;
+    border-left:5px solid #0057b7;
 }
 
-/* FOOTER */
-footer {
-  background: #002d62;
-  color: white;
-  padding: 20px;
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#0057b7;
+    color:white;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- ===== NAVBAR ===== -->
+<header>
 <nav>
-  <div><b>APSPEWA</b></div>
-  <div>
-    <a href="#hero">Home</a>
-    <a href="#register">Register</a>
-    <a href="#gallery">Gallery</a>
-  </div>
+<h1>APSPEWA</h1>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#register">Register</a></li>
+<li><a href="#gallery">Gallery</a></li>
+</ul>
 </nav>
+</header>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-content">
-    <h1>APSPEWA Official Portal</h1>
-    <p>Digital Membership • ID Card Generation • Member Services</p>
-
-    <a href="#register" class="btn primary">Register Now</a>
-    <a href="#gallery" class="btn secondary">View Gallery</a>
-  </div>
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+<div>
+<h2>Welcome to APSPEWA Portal</h2>
+<p>
+APSPEWA is a community-based welfare and development platform designed to support members with identity registration, digital ID cards, and organized community services. Our mission is to bring transparency, unity, and digital empowerment in one place.
+</p>
+</div>
 </section>
 
-<!-- REGISTER -->
+<!-- ===== REGISTER ===== -->
+<section id="register">
+<h2 class="section-title">Member Registration</h2>
+
+<div class="form-box">
 <form id="regForm">
 
-  <input type="text" id="name" placeholder="Full Name" required>
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email ID" required>
+<input type="text" placeholder="Phone Number" required>
+<input type="text" placeholder="Mandal" required>
+<input type="text" placeholder="State" required>
+<input type="file" accept="image/*">
 
-  <input type="email" id="email" placeholder="Email ID" required>
-
-  <input type="text" id="phone" placeholder="Phone Number" required>
-
-  <input type="text" id="mandal" placeholder="Mandal" required>
-
-  <input type="text" id="district" placeholder="District" required>
-
-  <input type="text" id="state" placeholder="State" required>
-
-  <button type="button" onclick="generateID()">Generate ID Card</button>
+<button type="button" onclick="generateID()">Generate ID</button>
 </form>
 
-<div id="idOutput"></div>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <h2>Gallery</h2>
-
-  <div class="gallery-grid">
-    <img src="images/1.jpg">
-    <img src="images/2.jpg">
-    <img src="images/3.jpg">
-    <img src="images/4.jpg">
-  </div>
+<div id="idCard" class="id-card" style="display:none;"></div>
+</div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+<h2 class="section-title">Gallery</h2>
+
+<div class="gallery">
+<img src="https://source.unsplash.com/400x300/?community,event">
+<img src="https://source.unsplash.com/400x300/?meeting,people">
+<img src="https://source.unsplash.com/400x300/?india,village">
+<img src="https://source.unsplash.com/400x300/?education,group">
+</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
 <footer>
-  © 2026 APSPEWA Official Portal
+© 2026 APSPEWA | All Rights Reserved
 </footer>
 
-<!-- SCRIPT -->
 <script>
-function generateID() {
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let phone = document.getElementById("phone").value;
-  let mandal = document.getElementById("mandal").value;
-  let district = document.getElementById("district").value;
-  let state = document.getElementById("state").value;
+// ===== SIMPLE ID GENERATION =====
+function generateID(){
+    let id = "APSPEWA-" + Math.floor(Math.random()*1000000);
 
-  if(!name || !email || !phone || !mandal || !district || !state){
-    alert("Please fill all fields");
-    return;
-  }
-
-  let id = "APS" + Math.floor(Math.random() * 1000000);
-
-  document.getElementById("idOutput").innerHTML = `
-    <div class="id-card" id="card">
-      <h3>APSPEWA MEMBER ID</h3>
-
-      <p><b>ID:</b> ${id}</p>
-      <p><b>Name:</b> ${name}</p>
-      <p><b>Email:</b> ${email}</p>
-      <p><b>Phone:</b> ${phone}</p>
-      <p><b>Mandal:</b> ${mandal}</p>
-      <p><b>District:</b> ${district}</p>
-      <p><b>State:</b> ${state}</p>
-    </div>
-
-    <br><br>
-    <button onclick="downloadCard()">Download ID Card</button>
-  `;
-}
-</script>
-
-function downloadCard() {
-  let content = document.getElementById("card").innerHTML;
-  let win = window.open("", "", "width=800,height=600");
-  win.document.write("<h2>APSPEWA ID CARD</h2>" + content);
-  win.print();
+    document.getElementById("idCard").style.display = "block";
+    document.getElementById("idCard").innerHTML = `
+        <h3>Member ID Generated</h3>
+        <p><b>ID:</b> ${id}</p>
+        <p>Status: Active Member</p>
+    `;
 }
 </script>
 
