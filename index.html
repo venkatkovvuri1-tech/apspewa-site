@@ -1,32 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APSPEWA - Empowering Employees</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6ff;
+}
+
+/* HEADER */
+header {
+  background: #1a237e;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  color: white;
+}
+
+.btn {
+  background: #ffca28;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* FORM */
+.form input {
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #1a237e;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ID CARD */
+.id-card {
+  background: white;
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-header {
+  background: #1a237e;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.profile-img {
+  width: 80px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+/* WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  nav { display:none; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div><b>APSPEWA</b></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Welcome to APSPEWA</h1>
+  <p>Empowering employees and building a stronger professional community.</p>
+  <a href="#register" class="btn">Join Now</a>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <h2>About APSPEWA</h2>
+  <p>We support employee growth, innovation, and networking.</p>
+</section>
+
+<!-- GALLERY -->
+<section class="section">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    <img src="images/3.jpg">
+    <img src="images/4.jpg">
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="section" id="register">
+  <h2>Member Registration</h2>
+
+  <form class="form" onsubmit="return submitForm()">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="address" placeholder="Address" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="msg"></p>
+
+  <!-- ID CARD -->
+  <div class="id-card">
+    <div class="card-header">APSPEWA ID CARD</div>
+
+    <img class="profile-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+    <h3 id="cardName">Name</h3>
+    <p id="cardEmail">Email</p>
+    <p id="cardAddress">Address</p>
+
+    <h4>ID: <span id="memberId"></span></h4>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+  <h2>Contact</h2>
+  <p>Phone: +91 7899341629</p>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/917899341629" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60">
+</a>
+
 <script>
 function submitForm() {
-  let name = document.getElementById("name").value.trim();
-  let email = document.getElementById("email").value.trim();
-  let address = document.getElementById("address").value.trim();
 
-  if (name === "" || email === "" || address === "") {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let address = document.getElementById("address").value;
+
+  if(name === "" || email === "" || address === ""){
     alert("Please fill all fields");
     return false;
   }
 
-  // Generate Member ID
+  // Generate ID
   let memberId = "APS" + Date.now().toString().slice(-6);
 
-  // Save to localStorage
-  let users = JSON.parse(localStorage.getItem("apspewaUsers") || "[]");
-  users.push({ name, email, address, memberId });
-  localStorage.setItem("apspewaUsers", JSON.stringify(users));
-
-  // Fill ID Card
+  // Fill card
   document.getElementById("cardName").innerText = name;
   document.getElementById("cardEmail").innerText = email;
   document.getElementById("cardAddress").innerText = address;
   document.getElementById("memberId").innerText = memberId;
 
-  // Show message
   document.getElementById("msg").innerText =
-    "Registration successful! ID Card generated.";
+    "Registration successful! ID generated.";
 
   return false;
 }
 </script>
+
+</body>
+</html>
