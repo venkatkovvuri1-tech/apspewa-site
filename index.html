@@ -245,6 +245,19 @@ provide identity cards, and support organized community development with transpa
             font-weight:bold;
           ">
           Generate ID
+          <button type="button"
+  onclick="downloadPDF()"
+  style="
+    background:#2e7d32;
+    color:#fff;
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+  ">
+  Download ID PDF
+</button>
         </button>
 
         <button type="submit"
@@ -276,6 +289,54 @@ function generateID() {
   document.getElementById("idResult").innerText =
     "Generated Member ID: " + id;
 }
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+function generateID() {
+  const id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
+  document.getElementById("idResult").innerText =
+    "Generated Member ID: " + id;
+  document.getElementById("memberForm").setAttribute("data-id", id);
+}
+
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const form = document.getElementById("memberForm");
+
+  const name = form.querySelector('input[placeholder="Full Name"]').value;
+  const mobile = form.querySelector('input[placeholder="Mobile Number"]').value;
+  const email = form.querySelector('input[placeholder="Email ID"]').value;
+  const mandal = form.querySelector('input[placeholder="Mandal"]').value;
+  const district = form.querySelector('input[placeholder="District"]').value;
+  const state = form.querySelector('input[placeholder="State"]').value;
+  const pincode = form.querySelector('input[placeholder="Pincode"]').value;
+
+  let id = form.getAttribute("data-id");
+  if (!id) {
+    id = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
+  }
+
+  doc.setFontSize(16);
+  doc.text("APSPEWA MEMBERSHIP ID CARD", 20, 20);
+
+  doc.setFontSize(12);
+  doc.text("Member ID: " + id, 20, 40);
+  doc.text("Name: " + name, 20, 50);
+  doc.text("Mobile: " + mobile, 20, 60);
+  doc.text("Email: " + email, 20, 70);
+  doc.text("Mandal: " + mandal, 20, 80);
+  doc.text("District: " + district, 20, 90);
+  doc.text("State: " + state, 20, 100);
+  doc.text("Pincode: " + pincode, 20, 110);
+
+  doc.text("Official APSPEWA Membership", 20, 130);
+
+  doc.save(id + "_membership.pdf");
+}
+</script>
 </script>
 
 <!-- GALLERY -->
