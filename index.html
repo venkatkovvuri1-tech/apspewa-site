@@ -243,8 +243,15 @@ ${photoData ? `<img src="${photoData}" style="width:100px;height:100px;border-ra
 <p><b>Name:</b> ${document.getElementById("name").value}</p>
 <p><b>Village:</b> ${document.getElementById("village").value}</p>
 <p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
-<p>Status: ACTIVE MEMBER</p>
+document.getElementById("idCard").innerHTML = `
+<h3>Digital ID Card</h3>
+${photoData ? `<img src="${photoData}" style="width:100px;height:100px;border-radius:10px;">` : ""}
+<p><b>ID:</b> ${generatedID}</p>
+<p><b>Name:</b> ${document.getElementById("name").value}</p>
+<p><b>Village:</b> ${document.getElementById("village").value}</p>
+<p><b>Mandal:</b> ${document.getElementById("mandal").value}</p>
 `;
+;
 }
 
 /* PDF DOWNLOAD */
