@@ -374,27 +374,55 @@ ${photoData ? `<img src="${photoData}" style="width:100px;height:100px;border-ra
 }
 
 /* PDF DOWNLOAD */
-function downloadPDF(){
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
+  const form = document.getElementById("memberForm");
 
-doc.setFontSize(16);
-doc.text("APSPEWA DIGITAL ID CARD", 20, 20);
+  const inputs = form.querySelectorAll("input");
 
-doc.text("ID: " + generatedID, 20, 40);
-doc.text("Name: " + document.getElementById("name").value, 20, 50);
-doc.text("Phone: " + document.getElementById("phone").value, 20, 60);
-doc.text("Village: " + document.getElementById("village").value, 20, 70);
-doc.text("Mandal: " + document.getElementById("mandal").value, 20, 80);
-doc.text("District: " + document.getElementById("district").value, 20, 90);
-doc.text("State: " + document.getElementById("state").value, 20, 100);
+  const name = inputs[0].value || "-";
+  const father = inputs[1].value || "-";
+  const email = inputs[2].value || "-";
+  const mobile = inputs[3].value || "-";
+  const mandal = inputs[4].value || "-";
+  const district = inputs[5].value || "-";
+  const state = inputs[6].value || "-";
+  const pincode = inputs[7].value || "-";
 
-if(photoData){
-doc.addImage(photoData,"JPEG",150,30,40,40);
-}
+  if (!currentID) {
+    currentID = "APSPEWA-" + Math.floor(100000 + Math.random() * 900000);
+  }
 
-doc.save(generatedID + ".pdf");
+  // TITLE
+  doc.setFontSize(16);
+  doc.text("APSPEWA MEMBERSHIP ID CARD", 20, 20);
+
+  doc.setFontSize(12);
+
+  doc.text("Member ID: " + currentID, 20, 35);
+  doc.text("Name: " + name, 20, 45);
+  doc.text("Father: " + father, 20, 55);
+  doc.text("Email: " + email, 20, 65);
+  doc.text("Mobile: " + mobile, 20, 75);
+  doc.text("Mandal: " + mandal, 20, 85);
+  doc.text("District: " + district, 20, 95);
+  doc.text("State: " + state, 20, 105);
+  doc.text("Pincode: " + pincode, 20, 115);
+
+  // PHOTO FIX (IMPORTANT)
+  if (userPhoto && userPhoto.length > 100) {
+    try {
+      doc.addImage(userPhoto, "JPEG", 140, 30, 50, 50);
+    } catch (e) {
+      console.log("Image error:", e);
+    }
+  }
+
+  doc.text("Official APSPEWA Membership", 20, 135);
+
+  doc.save(currentID + "_ID.pdf");
 }
 
 /* WHATSAPP SHARE */
