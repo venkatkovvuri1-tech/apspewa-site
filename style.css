@@ -32,19 +32,12 @@
   color: black;
   font-weight: bold;
 }
-.id-card {
-  width: 340px;
-  height: 200px;
-  margin: 20px auto;
-  background: linear-gradient(135deg, #0d47a1, #1976d2);
-  color: white;
-  border-radius: 12px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  font-family: Arial;
+.id-card{
+    margin-top:15px;
+    padding:15px;
+    background:#e6f0ff;
+    border-left:none;
 }
-
 /* HEADER */
 .id-header {
   font-size: 16px;
